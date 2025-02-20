@@ -1,0 +1,40 @@
+<svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Top left section -->
+  <circle cx="150" cy="150" r="100" fill="none" stroke="black" stroke-width="2" stroke-opacity="0.3"/>
+  <circle cx="150" cy="150" r="70" fill="none" stroke="black" stroke-width="2" stroke-opacity="0.3"/>
+  <line x1="150" y1="80" x2="150" y2="220" stroke="black" stroke-width="2" stroke-opacity="0.3"/>
+  
+  <!-- Top right section -->
+  <path d="M 500,50 A 200,200 0 0 1 750,50" fill="#8B5CF6" fill-opacity="0.3"/>
+  <path d="M 550,100 L 600,70 L 650,100 L 700,70" fill="none" stroke="black" stroke-width="2" stroke-opacity="0.3"/>
+  
+  <!-- Bottom left section -->
+  <circle cx="150" cy="650" r="80" fill="black" fill-opacity="0.3"/>
+  <circle cx="150" cy="650" r="60" fill="none" stroke="white" stroke-width="2" stroke-opacity="0.3"/>
+  
+  <!-- Bottom right geometric pattern -->
+  <path d="M 550,650 L 650,650 L 550,750 Z" fill="#FCD34D" fill-opacity="0.3"/>
+  <path d="M 650,650 L 650,750 L 550,750 Z" fill="#7DD3FC"/>
+  
+  <!-- Corner decorative elements -->
+  <rect x="50" y="350" width="20" height="20" fill="#8B5CF6" fill-opacity="0.3"/>
+  <rect x="80" y="350" width="20" height="20" fill="#7DD3FC" fill-opacity="0.3"/>
+  <rect x="110" y="350" width="20" height="20" fill="#FCD34D" fill-opacity="0.3"/>
+  
+  <!-- Right side elements -->
+  <rect x="700" y="350" width="20" height="20" fill="#8B5CF6" fill-opacity="0.3"/>
+  <rect x="730" y="350" width="20" height="20" fill="#7DD3FC" fill-opacity="0.3"/>
+  <rect x="700" y="380" width="20" height="20" fill="#FCD34D" fill-opacity="0.3"/>
+  
+  <!-- Bottom connected circles -->
+  <circle cx="600" cy="750" r="30" fill="none" stroke="black" stroke-width="2"/>
+  <line x1="630" y1="750" x2="670" y2="750" stroke="black" stroke-width="2"/>
+  <circle cx="700" cy="750" r="30" fill="black" fill-opacity="0.3"/>
+  
+  <!-- Top decorative elements -->
+  <path d="M 350,50 L 380,20 L 410,50 L 440,20" fill="none" stroke="#FCD34D" stroke-width="3" stroke-opacity="0.3"/>
+  
+  <!-- Side triangles -->
+  <path d="M 50,500 L 80,450 L 110,500 Z" fill="#7DD3FC" fill-opacity="0.3"/>
+  <path d="M 700,500 L 730,450 L 760,500 Z" fill="#FCD34D" fill-opacity="0.3"/>
+</svg>

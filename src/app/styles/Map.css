@@ -1,0 +1,17 @@
+#mapid { 
+    height: 65vh;
+    /* border: 2px solid black; */
+  }
+  
+  .mapContainer{
+    height: 100%; 
+    /* position: fixed !important; */
+    /* width: 100%; */
+  }
+
+
+  @media only screen and (max-width:426px){
+    #mapid{
+        height: 45vh;
+    }
+}
