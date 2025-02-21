@@ -4,9 +4,8 @@ import { AlertCircle, CheckCircle } from 'lucide-react';
 import { auth } from '../../../firebase';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
-import registerimage from '../../../public/registerpagebg.png'
-import Image from 'next/image';
 import Header from '../components/Header';
+import axios from 'axios';
 
 
 
@@ -92,7 +91,7 @@ const RegisterPage = () => {
     return newErrors;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     
@@ -104,29 +103,42 @@ const RegisterPage = () => {
     }
 
     try {
-
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        formData.email,
-        formData.password
-      );
-
-
-
-      await updateProfile(userCredential.user, {
-        displayName: formData.fullName,
-        customClaims: {
-          greScores: {
-            verbal: parseInt(formData.verbalScore),
-            quant: parseInt(formData.quantScore),
-            awa: parseFloat(formData.awaScore)
+      createUserWithEmailAndPassword(auth, formData.email, formData.password)
+        .then((userCredential) => {
+          // Signed up 
+          const user = userCredential.user;
+          const newUser = {
+            uid: user.uid,
+            full_name: formData.fullName,
+            email: formData.email,
+            gpa: parseFloat(formData.gpa),
+            password: formData.password,
+            verbal_score: parseInt(formData.verbalScore),
+            quant_score: parseInt(formData.quantScore),
+            awa_score: parseFloat(formData.awaScore)
           }
-        }
-      });
+          axios.post('http://127.0.0.1:5000/api/users', newUser, {
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+          .then((response) => {
+            console.log("Registered user: ");
+            console.log(response);
+            router.push("/login");
 
-      setSubmitSuccess(true);
-      setErrors({});
-      router.push("/login");
+          })
+    
+          setSubmitSuccess(true);
+          setErrors({});
+        })
+        
+
+      console.log("User id:", userCredential?.user?.id);
+
+      
+
+      
 
     } catch (error) {
       let errorMessage = 'Registration failed. Please try again.';
@@ -173,10 +185,10 @@ const RegisterPage = () => {
   }
 
   return (
-    <div className='relative'>
+    <div>
       <Header displaySearch={false} />
 
-      <div className="absolute top-0 right-0 left-0 bottom-0 font-nunito min-h-screen flex justify-center items-center px-[10px] bg-[url(/geometric-background.svg)] bg-contain bg-center">
+      <div className="font-nunito min-h-screen flex justify-center items-center px-[10px] bg-[url(/geometric-background.svg)] bg-contain bg-center">
         <div className="w-[100%] lg:w-[50%] justify-center items-center">
             <div className="w-[100%] max-w-md mx-auto bg-white rounded-xl shadow-2xl overflow-hidden mt-[100px]">
             <div className="px-6 py-8">
