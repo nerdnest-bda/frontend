@@ -18,6 +18,7 @@ const AccountDetails = () => {
             dispatch(logout());
             await signOut(auth);
             setIsOpen(false);
+            router.push('/');
             console.log("User signed out successfully");
         } catch (error) {
             console.error("Error while signing out");
