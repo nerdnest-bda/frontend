@@ -23,7 +23,6 @@ const Header = ({displaySearch}) => {
 
     const inputRef = useRef(null);
 
-    console.log("User type: " + typeof user);
 
     const dispatch = useDispatch();
 

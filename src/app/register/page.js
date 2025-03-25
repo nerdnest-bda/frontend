@@ -108,7 +108,7 @@ const RegisterPage = () => {
           // Signed up 
           const user = userCredential.user;
           const newUser = {
-            uid: user.uid,
+            _id: user.uid,
             full_name: formData.fullName,
             email: formData.email,
             gpa: parseFloat(formData.gpa),
