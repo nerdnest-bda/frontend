@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { MapContainer, Marker, Popup, TileLayer, useMapEvents } from 'react-leaflet';
+import { MapContainer, Marker, Popup, TileLayer, useMap, useMapEvents } from 'react-leaflet';
 import styles from "../styles/Map.css"
 import { useDispatch } from 'react-redux';
 import { changeLoc } from '../features/locationSlice';
@@ -41,6 +41,16 @@ const MapEvents = ({ onBoundsChange, onMapClick }) => {
       return null;
 }
 
+const MapUpdater = ({ location }) => {
+    const map = useMap();
+    useEffect(() => {
+        if (location) {
+            map.setView(location, 13, { animate: true });
+        }
+    }, [location, map]);
+    return null;
+};
+
 const Map = ({location}) => {
 
     const [bounds, setBounds] = useState(null);
@@ -53,6 +63,7 @@ const Map = ({location}) => {
             ...bounds
         }))
     },[bounds, dispatch])
+
 
 
     return (
@@ -72,6 +83,8 @@ const Map = ({location}) => {
                     A pretty CSS3 popup. <br /> Easily customizable.
                 </Popup>
                 </Marker> */}
+                <MapUpdater location={location} />
+
             </MapContainer>
         </div>
     );
