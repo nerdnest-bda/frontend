@@ -132,11 +132,7 @@ const RegisterPage = () => {
           setSubmitSuccess(true);
           setErrors({});
         })
-        
-
-      console.log("User id:", userCredential?.user?.id);
-
-      
+  
 
       
 
@@ -160,9 +156,8 @@ const RegisterPage = () => {
       }
       
       setErrors({ submit: errorMessage });
-    } finally {
-      setIsSubmitting(false);
-    }
+      setisSubmitting(false);
+    } 
   };
 
   const handleChange = (e) => {
