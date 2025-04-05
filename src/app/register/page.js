@@ -117,7 +117,7 @@ const RegisterPage = () => {
             quant_score: parseInt(formData.quantScore),
             awa_score: parseFloat(formData.awaScore)
           }
-          axios.post('http://127.0.0.1:5000/api/users', newUser, {
+          axios.post(`${process.env.NEXT_PUBLIC_NERDNEST_SERVER_URL}/api/users`, newUser, {
             headers: {
               'Content-Type': 'application/json'
             }

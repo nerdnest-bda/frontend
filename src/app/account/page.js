@@ -23,25 +23,29 @@ const AccountDetails = () => {
 
     useEffect(() => {
         // setUser(currentUser);
-        console.log("In account page, current_user", currentUser)
-        axios.get(`http://127.0.0.1:5000/api/users/${currentUser?.uid}`)
-        .then((response) => {
-            console.log(response.data)
-            let userData = {
-                name: response.data.full_name,
-                email: response.data.email,
-                gre_quant: response.data.quant_score,
-                gre_verbal: response.data.verbal_score,
-                gpa: response.data.gpa,
-            }
-            console.log("setting user data", userData)
-            setUser(userData)
-        })
+        if (currentUser?.uid) {  // Only make the request if uid exists
+            axios.get(`${process.env.NEXT_PUBLIC_NERDNEST_SERVER_URL}/api/users/${currentUser.uid}`)
+            .then((response) => {
+                console.log(response.data)
+                let userData = {
+                    name: response.data.full_name,
+                    email: response.data.email,
+                    gre_quant: response.data.quant_score,
+                    gre_verbal: response.data.verbal_score,
+                    gpa: response.data.gpa,
+                }
+                console.log("setting user data", userData)
+                setUser(userData)
+            })
+            .catch(error => {
+                console.error("Error fetching user data:", error)
+            })
+        }
     }, [currentUser]);
   
     return (
-        <div>
-            <Header displaySearch={true} />
+        <div className=' h-screen bg-[url(/geometric-background.svg)] bg-contain bg-center'>
+            <Header displaySearch={false} />
             <div className="font-nunito mx-[20px] max-w-3xl md:mx-auto mt-16 p-8 bg-white rounded-2xl shadow-2xl">
                 <h1 className="text-3xl font-bold text-center">account details</h1>
                 <p className='text-center text-[12px]'>click on value to edit</p>
