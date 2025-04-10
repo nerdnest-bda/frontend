@@ -132,7 +132,7 @@ const Locator = () => {
   if (!hasMounted) return null;
 
   return (
-    <div className='flex flex-col md:flex-row px-[100px] bg-[#fafafa] my-[100px]'>
+    <div className='flex flex-col md:flex-row px-[100px] bg-[#fafafa] my-[100px] mt-[70px]'>
       {isLoading ? (
         <div className="md:max-w-[50%] md:min-w-[50%] flex justify-center items-center w-full h-[500px]">
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-black"></div>
@@ -148,7 +148,7 @@ const Locator = () => {
             <input 
               onChange={(e) => setCity(e.target.value)}
               onKeyPress={(e) => e.key === 'Enter' && getCoords(city)}
-              className="bg-[#e0e0e0] m-[10px] text-[18px] pl-[10px] border-gray-600 rounded-md w-[80%]" 
+              className="bg-[#e0e0e0] m-[10px] text-[18px] pl-[10px] border-gray-600 rounded-md w-[80%] focus:outline-none" 
               type="text" 
               placeholder="Search location" 
             />

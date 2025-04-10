@@ -2,7 +2,8 @@
 const nextConfig = {
     images: {
         domains: [
-            "picsum.photos"
+            "picsum.photos",
+            "encrypted-tbn0.gstatic.com"
         ]
     }
 };
