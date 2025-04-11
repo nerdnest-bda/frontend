@@ -14,6 +14,7 @@ const CollegeListCard = ({college}) => {
   const router = useRouter()
 
   const redirectToUniPage = () => {
+    console.log("College deets:", college)
     dispatch(changeCurrentUniversity(college))
     router.push(`/university/${college._id}`)
   }
