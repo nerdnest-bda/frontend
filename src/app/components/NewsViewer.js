@@ -50,7 +50,7 @@ const NewsViewer = ({universityId}) => {
       {
         
         newsArticles?.length > 0 ? (
-          <div className='flex gap-[20px] overflow-x-scroll no-scrollbar w-full'>
+          <div className='flex pb-[40px] gap-[20px] overflow-x-scroll no-scrollbar w-full'>
             {newsArticles.map((news_object, index) => (
               
               <NewsCard key={index} news={news_object}/>
