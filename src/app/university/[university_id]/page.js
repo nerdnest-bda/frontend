@@ -174,11 +174,17 @@ const UniversityDetails = () => {
             </div>
             <div className='sticky top-[120px] z-[10] max-w-[100rem] mx-auto rounded-b-[20px] flex gap-[30px] items-center px-[40px] bg-[#fafafa] shadow-xl'>
               <div className={`${currentSection=="about"?"border-b-[2px] border-black":""} py-[20px] hover:cursor-pointer`}
-                onClick={() => scrollWithOffset(aboutRef)}>
+                onClick={() => {
+                  scrollWithOffset(aboutRef)
+                  setCurrentSection("about")
+                }}>
                   About
               </div>
               <div className={`${currentSection=="stats"?"border-b-[2px] border-black":""} py-[20px] hover:cursor-pointer`}
-                onClick={() => scrollWithOffset(statsRef)}>
+                onClick={() => {
+                  scrollWithOffset(statsRef)
+                  setCurrentSection("stats")
+                }}>
                 Statistics
               </div>
             </div>
