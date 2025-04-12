@@ -1,29 +1,28 @@
-name: Sync to Vercel Fork
+name: Sync Fork
 
 on:
   push:
     branches:
-      - main
+      - main  # Change this if your default branch has a different name
 
 jobs:
-  push-to-vercel:
+  sync:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout org repo
+      - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-      - name: Remove workflows before pushing
-        run: |
-          rm -rf .github/workflows
-
-      - name: Clear credential cache
-        run: |
-          git config --global --unset credential.helper || true
-
-      - name: Push to personal fork
+      - name: Configure Git
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
 
-          git remote add vercel-fork https://prajwal-naik:${{ secrets.PRAJWAL_PERSONAL_TOKEN }}@github.com/prajwal-naik/nerd-nest-frontend.git
-          git push vercel-fork main --force
+      - name: Push to personal fork
+        env:
+          PAT: ${{ secrets.PAT }}
+          PERSONAL_FORK: https://${PAT}@github.com/prajwal-naik/nerd-nest-frontend.git
+        run: |
+          git remote add personal-fork ${PERSONAL_FORK}
+          git push personal-fork main:main --force  # Change "main" to your branch name if different
