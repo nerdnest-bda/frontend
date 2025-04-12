@@ -3,17 +3,18 @@ name: Sync Fork
 on:
   push:
     branches:
-      - main
+      - main  # Change this if your default branch has a different name
 
 jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
       - name: Sync fork
-        uses: tgymnich/fork-sync@v1.6.0
+        uses: TG908/fork-sync@v2.3
         with:
-          personal_token: ${{ secrets.PAT }}
-          source_repository: nerdnest-bda/frontend
-          target_repository: prajwal-naik/nerd-nest-frontend
-          source_branch: main
-          target_branch: main
+          github_token: ${{ secrets.PAT }}
+          owner: prajwal-naik
+          base: main
+          head: main
+          repo: nerd-nest-frontend
+          merge_branch: true
