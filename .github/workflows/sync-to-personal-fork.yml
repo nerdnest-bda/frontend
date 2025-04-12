@@ -26,6 +26,9 @@ jobs:
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
-          echo $TOKEN
+
+          git config --global --unset credential.helper || true
+          git config --global credential.helper ""
+          
           git remote add vercel-fork https://x-access-token:${TOKEN}@github.com/prajwal-naik/nerd-nest-frontend.git
           git push vercel-fork main --force
