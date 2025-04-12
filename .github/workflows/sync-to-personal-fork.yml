@@ -9,19 +9,11 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Sync fork
+        uses: tgymnich/fork-sync@v1.6.0
         with:
-          fetch-depth: 0
-
-      - name: Push to personal fork
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT }}
-        run: |
-          echo "Setting up remote with authentication"
-          git remote add personal-fork "https://x-access-token:${GITHUB_TOKEN}@github.com/prajwal-naik/nerd-nest-frontend.git"
-          
-          git remote -v
-          
-          echo "Pushing to personal fork"
-          git push personal-fork main:main --force
+          personal_token: ${{ secrets.PAT }}
+          source_repository: nerdnest-bda/frontend
+          target_repository: prajwal-naik/nerd-nest-frontend
+          source_branch: main
+          target_branch: main
