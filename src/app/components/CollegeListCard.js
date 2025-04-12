@@ -1,9 +1,10 @@
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { changeCurrentUniversity, selectCurrentUniversity } from '../features/currentUniversitySlice'
 import { current } from '@reduxjs/toolkit'
 import { useDispatch, useSelector } from 'react-redux'
+import axios from 'axios'
 
 const CollegeListCard = ({college}) => {
 
@@ -11,13 +12,30 @@ const CollegeListCard = ({college}) => {
 
   const contextCurrentUniversity = useSelector(selectCurrentUniversity)
 
+  const [logoUrl, setLogoUrl] = useState("")
+
   const router = useRouter()
 
   const redirectToUniPage = () => {
     console.log("College deets:", college)
+    college.mascot_photo = logoUrl
     dispatch(changeCurrentUniversity(college))
     router.push(`/university/${college._id}`)
   }
+
+  useEffect(() => {
+    axios.get(`${process.env.NEXT_PUBLIC_NERDNEST_SERVER_URL}/api/universities/logo?university_name=${encodeURIComponent(college.name)}`)
+    .then((res) => {
+      if (res.status === 200) {
+          setLogoUrl(res.data.logo_url)
+      } else {
+          setLogoUrl(college.mascot_photo)
+      }
+    })
+    .catch((err) => {
+      setLogoUrl(college.mascot_photo)
+    })
+  }, [])
 
   return (
     <div 
@@ -26,10 +44,10 @@ const CollegeListCard = ({college}) => {
       <div className = "mr-[20px] rounded-l-lg h-[100%] flex-shrink-0">
         <Image 
           alt="college_logo"
-          src={college.mascot_photo}
+          src={logoUrl || college.mascot_photo}
           width={100} 
           height={100}
-          className='rounded-l-lg object-cover h-[120px] w-[120px]'/>
+          className='rounded-l-lg object-cover h-[120px] w-[120px] p-[15px]'/>
       </div>
       <div className = "font-nunito flex flex-col justify-center gap-[8px] overflow-hidden mr-[10px]">
         <div className='text-[20px] truncate'>{college.name}</div>

@@ -3,7 +3,8 @@ const nextConfig = {
     images: {
         domains: [
             "picsum.photos",
-            "encrypted-tbn0.gstatic.com"
+            "encrypted-tbn0.gstatic.com",
+            "upload.wikimedia.org"
         ]
     }
 };

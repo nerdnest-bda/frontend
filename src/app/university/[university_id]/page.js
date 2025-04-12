@@ -113,22 +113,48 @@ const UniversityDetails = () => {
   }
 
 
+  // useEffect(() => {
+  //   console.log("contextCurrentUniversity", contextCurrentUniversity)
+  //   if(!contextCurrentUniversity) {
+  //     setLoading(true)
+  //     axios.get(`${process.env.NEXT_PUBLIC_NERDNEST_SERVER_URL}/api/universities/${params.university_id}`)
+  //     .then((res) => {
+  //       dispatch(changeCurrentUniversity(res.data))
+  //     })
+  //     .catch((error) => {
+  //       console.log("Error fetching university: ", error)
+  //     })
+  //     .finally(() => {
+  //       setLoading(false)
+  //     })
+  //   }
+  // }, [contextCurrentUniversity, dispatch, params.university_id])
+
   useEffect(() => {
-    console.log("contextCurrentUniversity", contextCurrentUniversity)
-    if(!contextCurrentUniversity) {
+    if (!contextCurrentUniversity) {
       setLoading(true)
       axios.get(`${process.env.NEXT_PUBLIC_NERDNEST_SERVER_URL}/api/universities/${params.university_id}`)
-      .then((res) => {
-        dispatch(changeCurrentUniversity(res.data))
-      })
-      .catch((error) => {
-        console.log("Error fetching university: ", error)
-      })
-      .finally(() => {
-        setLoading(false)
-      })
+        .then(async (res) => {
+          const universityData = res.data;
+          try {
+            const logoRes = await axios.get(`${process.env.NEXT_PUBLIC_NERDNEST_SERVER_URL}/api/universities/logo?university_name=${encodeURIComponent(universityData.name)}`)
+            if (logoRes.status === 200) {
+              universityData.mascot_photo = logoRes.data.logo_url
+            }
+          } catch {
+          }
+          dispatch(changeCurrentUniversity(universityData))
+        })
+        .catch((error) => {
+          console.log("Error fetching university: ", error)
+        })
+        .finally(() => {
+          setLoading(false)
+        })
     }
   }, [contextCurrentUniversity, dispatch, params.university_id])
+
+
 
   
 
@@ -142,7 +168,7 @@ const UniversityDetails = () => {
         </div> : (
           <div className='relative my-[50px]'>
             <div className='m-auto max-w-[100rem] bg-[url(/geometric-background.svg)]  bg-no-repeat bg-cover rounded-[20px] rounded-b-[0px] flex flex-col shadow-xl p-[40px] pb-[30px] border-[1px] border-black-300'>
-              <Image src={contextCurrentUniversity?.mascot_photo} width={100} height={100} alt="college_mascot" className='rounded-[20px] h-[100px] w-[100px]'/>
+              <Image src={contextCurrentUniversity?.mascot_photo} width={100} height={100} alt="college_mascot" className='rounded-[20px] h-[100px] w-[100px] shadow-xl p-[5px] border-[2px] border-black-100'/>
               <div className='font-nunito text-[32px] font-[500] mt-[30px]'>{contextCurrentUniversity?.name}</div>
               <div className='font-[200]'>{getStateFromAddress(contextCurrentUniversity?.address) + ", United States"}</div>
             </div>
