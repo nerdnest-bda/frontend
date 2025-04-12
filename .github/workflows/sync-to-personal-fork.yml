@@ -9,12 +9,22 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-      - name: Sync fork
-        uses: TG908/fork-sync@v2.3
+      - name: Checkout code
+        uses: actions/checkout@v3
         with:
-          github_token: ${{ secrets.PAT }}
-          owner: prajwal-naik
-          base: main
-          head: main
-          repo: nerd-nest-frontend
-          merge_branch: true
+          fetch-depth: 0
+          token: ${{ secrets.PAT }}
+      
+      - name: Configure Git
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+      
+      - name: Add remote for personal fork
+        run: |
+          git remote add personal https://oauth2:${{ secrets.PAT }}@github.com/prajwal-naik/nerd-nest-frontend.git
+      
+      - name: Push to personal fork
+        run: |
+
+          git push personal HEAD:main --force
