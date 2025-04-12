@@ -9,7 +9,7 @@ const Statistics = forwardRef((props, ref) => {
 
     return (
           <div ref={ref} className={`w-[100%]  shadow-md rounded-[20px] relative overflow-hidden ${showMore ?"max-h-[400px] overflow-y-scroll" :"max-h-[800px] overflow-y-scroll"} transition-all duration-[300ms] border-[1px] border-black-100`}>
-              <div className='px-[60px] my-[30px] text-[28px] font-[300]'>statistics</div>
+              <div className='px-[60px] my-[30px] pb-[30px] text-[28px] font-[300] border-b-[1px] border-black-100'>Statistics</div>
               <div className='px-[60px] my-[30px] text-justify'>
                 What is Lorem Ipsum?
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
