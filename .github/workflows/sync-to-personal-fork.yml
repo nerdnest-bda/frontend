@@ -22,7 +22,6 @@ jobs:
       - name: Push to personal fork
         env:
           PAT: ${{ secrets.PAT }}
-          PERSONAL_FORK: https://${PAT}@github.com/prajwal-naik/nerd-nest-frontend.git
         run: |
-          git remote add personal-fork ${PERSONAL_FORK}
-          git push personal-fork main:main --force  # Change "main" to your branch name if different
+          git remote add personal-fork https://$PAT@github.com/prajwal-naik/nerd-nest-frontend.git
+          git push personal-fork main:main --force
