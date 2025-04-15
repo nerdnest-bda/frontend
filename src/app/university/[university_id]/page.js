@@ -167,8 +167,8 @@ const UniversityDetails = () => {
         <div className="animate-spin rounded-full h-12 w-12 border-t-2"></div>
         </div> : (
           <div className='relative my-[50px]'>
-            <div className='m-auto max-w-[100rem] bg-[url(/geometric-background.svg)]  bg-no-repeat bg-cover rounded-[20px] rounded-b-[0px] flex flex-col shadow-xl p-[40px] pb-[30px] border-[1px] border-black-300'>
-              <Image src={contextCurrentUniversity?.mascot_photo} width={100} height={100} alt="college_mascot" className='rounded-[20px] h-[100px] w-[100px] shadow-xl p-[5px] border-[2px] border-black-100'/>
+            <div className='m-auto max-w-[100rem] bg-[url(/geometric-background-college.svg)] bg-contain rounded-[20px] rounded-b-[0px] flex flex-col shadow-xl p-[40px] pb-[30px] border-[1px] border-black-300'>
+              <Image src={contextCurrentUniversity?.mascot_photo} width={100} height={100} alt="college_mascot" className='rounded-[20px] h-[100px] w-[100px] shadow-xl p-[5px] border-[2px] border-black-100 bg-[#fafafa]'/>
               <div className='font-nunito text-[32px] font-[500] mt-[30px]'>{contextCurrentUniversity?.name}</div>
               <div className='font-[200]'>{getStateFromAddress(contextCurrentUniversity?.address) + ", United States"}</div>
             </div>

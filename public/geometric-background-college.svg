@@ -1,0 +1,46 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Left side diagonal lines -->
+  <line x1="50" y1="100" x2="200" y2="250" stroke="#CCCCCC" stroke-width="2"/>
+  <line x1="70" y1="120" x2="220" y2="270" stroke="#CCCCCC" stroke-width="2"/>
+  <line x1="90" y1="140" x2="240" y2="290" stroke="#CCCCCC" stroke-width="2"/>
+  
+  <!-- Right side zigzag lines -->
+  <polyline points="550,100 600,150 650,100 700,150 750,100" stroke="#CCCCCC" stroke-width="2" fill="none"/>
+  <polyline points="550,150 600,200 650,150 700,200 750,150" stroke="#CCCCCC" stroke-width="2" fill="none"/>
+  
+  <!-- Top arc lines -->
+  <path d="M 300,50 Q 400,10 500,50" stroke="#E6D7FF" stroke-width="3" fill="none"/>
+  <path d="M 320,70 Q 400,30 480,70" stroke="#E6D7FF" stroke-width="2" fill="none"/>
+  
+  <!-- Bottom grid lines -->
+  <line x1="100" y1="400" x2="300" y2="400" stroke="#CCCCCC" stroke-width="1"/>
+  <line x1="100" y1="450" x2="300" y2="450" stroke="#CCCCCC" stroke-width="1"/>
+  <line x1="100" y1="400" x2="100" y2="450" stroke="#CCCCCC" stroke-width="1"/>
+  <line x1="200" y1="400" x2="200" y2="450" stroke="#CCCCCC" stroke-width="1"/>
+  <line x1="300" y1="400" x2="300" y2="450" stroke="#CCCCCC" stroke-width="1"/>
+  
+  <!-- Center cross lines -->
+  <line x1="400" y1="250" x2="400" y2="350" stroke="#F9F3D9" stroke-width="2"/>
+  <line x1="350" y1="300" x2="450" y2="300" stroke="#F9F3D9" stroke-width="2"/>
+  
+  <!-- Bottom right connection -->
+  <line x1="600" y1="500" x2="700" y2="500" stroke="#000000" stroke-width="1.5"/>
+  <circle cx="650" cy="500" r="20" stroke="#000000" stroke-width="1.5" fill="none"/>
+  <circle cx="700" cy="500" r="20" stroke="none" fill="#CCCCCC"/>
+  
+  <!-- Right side triangular lines -->
+  <line x1="650" y1="400" x2="700" y2="350" stroke="#A3D9FF" stroke-width="2"/>
+  <line x1="650" y1="400" x2="700" y2="450" stroke="#A3D9FF" stroke-width="2"/>
+  <line x1="700" y1="350" x2="700" y2="450" stroke="#A3D9FF" stroke-width="2"/>
+  
+  <!-- Left side square -->
+  <rect x="100" y="500" width="50" height="50" stroke="#CCCCCC" stroke-width="2" fill="none"/>
+  
+  <!-- Subtle yellow zigzag top -->
+  <polyline points="350,50 380,30 410,50 440,30 470,50" stroke="#F9F3D9" stroke-width="1.5" fill="none"/>
+  
+  <!-- Light blue triangle lines bottom left -->
+  <line x1="50" y1="500" x2="100" y2="450" stroke="#A3D9FF" stroke-width="1.5"/>
+  <line x1="50" y1="500" x2="150" y2="500" stroke="#A3D9FF" stroke-width="1.5"/>
+  <line x1="100" y1="450" x2="150" y2="500" stroke="#A3D9FF" stroke-width="1.5"/>
+</svg>
