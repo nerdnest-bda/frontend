@@ -47,7 +47,7 @@ const AboutCollege = forwardRef(({currentUniversity}, ref) => {
 
   return (
         <div ref={ref} className={`w-[100%]  shadow-md rounded-[20px] relative overflow-hidden ${showMore ?"max-h-[400px] overflow-y-scroll" :"max-h-[800px] overflow-y-scroll"} transition-all duration-[300ms] border-[1px] border-black-100`}>
-            <div className='px-[60px] my-[30px] pb-[30px] text-[28px] font-[300] border-b-[1px] border-black-100'>About</div>
+            <div className='sticky top-0 px-[60px]  py-[30px] text-[28px] font-[300] bg-[#fafafa] border-[1px] border-black-100 shadow-lg'>About</div>
             {aboutLoading ? (
                 <div className="md:max-w-[50%] md:min-w-[50%] flex justify-center items-center w-full h-[500px]">
                 <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-black"></div>

@@ -34,6 +34,7 @@ const Header = ({displaySearch}) => {
 
     const getSuggestions = (collegeName) => {
         if (collegeName === "") {
+            setCollegeSuggestions([])
             return
         }
         axios.get(`${process.env.NEXT_PUBLIC_NERDNEST_SERVER_URL}/api/universities/get_university_id?university_name=${encodeURIComponent(collegeName)}`)
@@ -116,8 +117,9 @@ const Header = ({displaySearch}) => {
                             <input ref={inputRef} 
                                 onChange={(e) => {
                                     setSearchCollege(e.target.value)
+                                    getSuggestions(searchCollege)
                                 }}
-                                onKeyPress={(e) => e.key === 'Enter' && getSuggestions(searchCollege)}
+                                // onKeyPress={(e) => e.key === 'Enter' && }
                                 className = "bg-[#e0e0e0] block ml-[10px] pl-[10px] border-gray-600 rounded-md focus:ring-0 focus:outline-none w-[200px] focus:w-[400px] transition-all duration-500" 
                                 type = "text" placeholder = "search university" 
                             />

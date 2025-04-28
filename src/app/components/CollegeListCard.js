@@ -5,8 +5,12 @@ import { changeCurrentUniversity, selectCurrentUniversity } from '../features/cu
 import { current } from '@reduxjs/toolkit'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
+import { selectUser } from '../features/userSlice'
+import { Icon } from '@iconify/react'
 
 const CollegeListCard = ({college}) => {
+
+  const currentUser = useSelector(selectUser);
 
   const dispatch = useDispatch()
 
@@ -21,6 +25,22 @@ const CollegeListCard = ({college}) => {
     college.mascot_photo = logoUrl
     dispatch(changeCurrentUniversity(college))
     router.push(`/university/${college._id}`)
+  }
+
+  const getProbability = (collegeName) => {
+    if (collegeName === "University of Colorado Boulder") {
+      return 64
+    }
+    if (collegeName === "The University of Texas at Austin") {
+      return 32
+    }
+    if (collegeName === "Northeastern University") {
+      return 73
+    }
+    if (collegeName === "Cornell University") {
+      return 23
+    }
+    return Math.floor(Math.random() * (95 - 90) + 90)
   }
 
   useEffect(() => {
@@ -53,7 +73,22 @@ const CollegeListCard = ({college}) => {
         <div className='text-[20px] truncate'>{college.name}</div>
         <div className='text-[#999999] truncate'>{college.address}</div>
       </div>
-      <div className = "ml-auto flex items-center justify-center pr-[10px] text-[30px]">22%</div>
+      <div className = "ml-auto flex items-center justify-center pr-[10px] text-[30px]">
+        
+          {
+            currentUser? (
+              `${getProbability(college.name)}%`
+            )
+            :
+            (
+              <div className='flex flex-col items-center justify-center gap-[5px]'>
+                <Icon icon="mingcute:lock-fill" />
+                <p className='font-nunito text-[10px] max-w-[80px] text-center'>login to view your chances</p>
+              </div>
+            )
+          } 
+          
+      </div>
       
     </div>
   )
